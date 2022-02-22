@@ -1,0 +1,29 @@
+.ItemListContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 15px;
+}
+
+.ItemListContainer h4 {
+  border-bottom: 1px solid #ececec;
+  font-size: 24px;
+  font-weight: 400 !important;
+  line-height: 30px;
+  color: #434343;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.ItemListContainer .Lista {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  list-style: none;
+  color: #5d5d5d;
+  line-height: 26px;
+  font-size: 18px;
+  padding: 6px 0;
+  display: block;
+}

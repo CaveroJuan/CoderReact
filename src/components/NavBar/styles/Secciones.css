@@ -1,0 +1,28 @@
+.NavBar .Secciones {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding-top: 10px;
+  margin: 0 30px;
+}
+.Secciones li {
+  padding: 15px;
+}
+
+.Secciones li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.Footer .Secciones {
+  flex-direction: column;
+  list-style: none;
+  padding-top: 20px;
+  padding-left: 50px;
+}
+
+.Footer .Secciones li {
+  padding: 5px;
+}

@@ -1,0 +1,36 @@
+.Tienda {
+  display: grid;
+  grid-template-areas:
+    "FiltroPrecio TituloTienda"
+    "ItemListContainer CuadriculaTienda";
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 170px 800px;
+  /* Cambiar a auto el segundo de arriba */
+
+  margin: auto 65px;
+  background-color: #fff;
+}
+
+.Tienda .TituloTienda {
+  grid-area: TituloTienda;
+  height: 100%;
+  width: 100%;
+}
+
+.Tienda .ItemListContainer {
+  grid-area: ItemListContainer;
+  height: 100%;
+  width: 100%;
+}
+
+.Tienda .FiltroPrecio {
+  grid-area: FiltroPrecio;
+  height: 100%;
+  width: 100%;
+}
+
+.Tienda .CuadriculaTienda {
+  grid-area: CuadriculaTienda;
+  height: 100%;
+  width: 100%;
+}

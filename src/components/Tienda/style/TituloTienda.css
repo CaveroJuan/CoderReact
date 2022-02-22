@@ -1,0 +1,12 @@
+.TituloTienda {
+  padding: 10px;
+}
+.TituloTienda h1 {
+  font-size: 30px;
+  line-height: 52px;
+  font-weight: 500;
+  color: #3d3d3d;
+  letter-spacing: -1px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+}
