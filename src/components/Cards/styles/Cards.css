@@ -1,0 +1,8 @@
+/* ancho 285 alto 385 */
+.Cards {
+  height: 387px;
+  width: 283px;
+  display: block;
+  border: 1px solid rgb(236, 236, 236);
+  padding: 34px;
+}
