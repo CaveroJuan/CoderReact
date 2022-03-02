@@ -1,12 +1,12 @@
 import React from 'react'
 import './style/ItemListContainer.css'
 
-function ItemListContainer({greeting}) {
+function ItemListContainer() {
   return (
     <div className='ItemListContainer'>
       <h4>Categorías de Productos</h4>
       <ul className='Lista'>
-        <li>{greeting}</li>
+        <li>Arandelas</li>
         <li>Bulones</li>
         <li>Esparragos</li>
         <li>Resortes</li>

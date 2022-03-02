@@ -4,11 +4,10 @@
     "FiltroPrecio TituloTienda"
     "ItemListContainer CuadriculaTienda";
   grid-template-columns: 20% 80%;
-  grid-template-rows: 170px 800px;
-  /* Cambiar a auto el segundo de arriba */
-
+  grid-template-rows: 170px auto;
   margin: auto 65px;
   background-color: #fff;
+  padding-bottom: 10px;
 }
 
 .Tienda .TituloTienda {

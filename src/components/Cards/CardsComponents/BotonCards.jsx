@@ -1,8 +1,9 @@
 import React from 'react'
+import './styles/BotonCards.css'
 
 function BotonCards() {
   return (
-    <div>BotonCards</div>
+    <div className='BotonCards'>Agregar</div>
   )
 }
 

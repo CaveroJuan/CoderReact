@@ -8,12 +8,10 @@ import './style/Tienda.css'
 
 function Tienda() {
 
-  const art1 = 'Arandelas'
-
   return (
     <div className='Tienda'>
         <TituloTienda/>
-        <ItemListContainer greeting={art1}/>
+        <ItemListContainer/>
         <FiltroPrecio/>
         <CuadriculaTienda/>
     </div>
