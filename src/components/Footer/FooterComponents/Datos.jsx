@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/Datos.css'
-import logo2 from '../../png/logo2.png'
+import logo2 from '../../../png/logo2.png'
 
 function Datos() {
   return (

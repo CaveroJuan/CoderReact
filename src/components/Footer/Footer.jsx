@@ -1,7 +1,7 @@
 import React from 'react'
-import Datos from './Datos'
-import Secciones from '../NavBar/Secciones'
-import Social from './Social'
+import Datos from './FooterComponents/Datos'
+import Secciones from '../NavBar/NavBarComponents/Secciones'
+import Social from './FooterComponents/Social'
 import './styles/Footer.css'
 
 function Footer() {

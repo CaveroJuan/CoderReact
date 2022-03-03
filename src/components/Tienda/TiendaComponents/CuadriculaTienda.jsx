@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Cards from '../Cards/Cards'
-import "./style/CuadriculaTienda.css";
-import { articulos } from "../data";
-
-const getFetch = new Promise((resolve, reject) => {
-  if (articulos.length!==0) { setTimeout(() => { resolve(articulos) }, 2000) } 
-  else { reject("LA BASE DE DATOS SE ENCUENTRA VACIA")}
-})
-
+import Cards from '../../Cards/Cards'
+import "./styles/CuadriculaTienda.css";
+import { getFetch} from "../../data";
 
 
 function CuadriculaTienda() {
@@ -18,8 +12,6 @@ function CuadriculaTienda() {
     .then((result) => setproductos(result))
     .catch((err) => console.log(err))
   }, [])
-
-  console.log(productos)
   
   return (
     <div className="CuadriculaTienda">

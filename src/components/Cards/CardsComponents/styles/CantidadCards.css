@@ -19,6 +19,12 @@
   width: 30px;
 }
 
+.CantidadCards span {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
 .BotonCards {
   height: 35px;
   width: 213px;

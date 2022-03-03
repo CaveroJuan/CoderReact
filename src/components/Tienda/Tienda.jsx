@@ -1,9 +1,9 @@
 import React from 'react'
-import TituloTienda from './TituloTienda' 
-import ItemListContainer from './ItemListContainer' 
-import FiltroPrecio from './FiltroPrecio'
-import CuadriculaTienda from './CuadriculaTienda'
-import './style/Tienda.css'
+import TituloTienda from './TiendaComponents/TituloTienda' 
+import Categorias from './TiendaComponents/Categorias' 
+import FiltroPrecio from './TiendaComponents/FiltroPrecio'
+import CuadriculaTienda from './TiendaComponents/CuadriculaTienda'
+import './styles/Tienda.css'
 
 
 function Tienda() {
@@ -11,7 +11,7 @@ function Tienda() {
   return (
     <div className='Tienda'>
         <TituloTienda/>
-        <ItemListContainer/>
+        <Categorias/>
         <FiltroPrecio/>
         <CuadriculaTienda/>
     </div>
