@@ -1,0 +1,27 @@
+.ItemDetails {
+  height: 400px;
+  width: 800px;
+  max-width: auto;
+  display: grid;
+  grid-template-areas:
+    "Imagen Titulo"
+    "Imagen Precio"
+    "Cantidad .";
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 30% 30% 30%;
+  border: 1px solid rgb(236, 236, 236);
+  padding: 34px;
+}
+
+.ItemDetails .ImagenCards {
+  grid-area: Imagen;
+}
+.ItemDetails .TituloCards {
+  grid-area: Titulo;
+}
+.ItemDetails .PrecioCards {
+  grid-area: Precio;
+}
+.ItemDetails .CantidadCards {
+  grid-area: Cantidad;
+}
