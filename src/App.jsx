@@ -1,16 +1,23 @@
-import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import Tienda from './components/Tienda/Tienda';
-import Footer from './components/Footer/Footer'
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import Tienda from "./components/Tienda/Tienda";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className='PaginaTienda'>
-      <NavBar/>
-      <Tienda/>
-      <Footer/>
-    </div>
-    
+    <BrowserRouter>
+      <div className="PaginaTienda">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Tienda/*" element={<Tienda />} />
+          <Route path="/*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

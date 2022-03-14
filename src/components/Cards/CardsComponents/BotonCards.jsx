@@ -1,10 +1,13 @@
-import React from 'react'
-import './styles/BotonCards.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles/BotonCards.css";
 
-function BotonCards() {
+function BotonCards({ id }) {
   return (
-    <div className='BotonCards'>Agregar</div>
-  )
+    <button className="BotonCards">
+      <Link to={`${id}`}> Detalle</Link>
+    </button>
+  );
 }
 
-export default BotonCards
+export default BotonCards;

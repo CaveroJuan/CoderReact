@@ -1,16 +1,27 @@
-import React from 'react'
-import './styles/Secciones.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles/Secciones.css";
 
 function Secciones() {
   return (
-        <ul className='Secciones'>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Tienda</a></li>
-            <li><a href="#">Contactos</a></li>          
-        </ul>
-  )
+    <ul className="Secciones">
+      <li>
+        <Link to={"/"}>Sobre Nosotros</Link>
+      </li>
+      <li>
+        <Link to={"/"}>Productos</Link>
+      </li>
+      <li>
+        <Link to={"/"}>Servicios</Link>
+      </li>
+      <li>
+        <Link to={"/Tienda"}>Tienda</Link>
+      </li>
+      <li>
+        <Link to={"/"}>Contactos</Link>
+      </li>
+    </ul>
+  );
 }
 
-export default Secciones
+export default Secciones;

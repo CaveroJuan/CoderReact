@@ -1,28 +1,33 @@
-import React, { useEffect, useState }  from 'react'
-import './styles/Categorias.css'
+import React, { useEffect, useState } from "react";
+import "./styles/Categorias.css";
 import { getFetch } from "../../data";
-
+import { Link } from "react-router-dom";
 
 function Categorias() {
-  const [productos, setproductos] = useState([])
+  const [productos, setproductos] = useState([]);
   useEffect(() => {
-   getFetch
-    .then((result) => {
-      let orden = result.map((item) => item.categoria);
-      orden.sort();
-      let filtrado = orden.filter((item, index, array) => (array.indexOf(item)===index))
-      setproductos(filtrado)})
-    .catch((err) => console.log(err))
-  }, [])
+    getFetch
+      .then((result) => {
+        let orden = result.map((item) => item.categoria);
+        orden.sort();
+        let filtrado = orden.filter((item, index, array) => array.indexOf(item) === index);
+        setproductos(filtrado);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-    <div className='Categorias'>
+    <div className="Categorias">
       <h4>Categorías de Productos</h4>
-      <ul className='Lista'>
-        {productos.map((item, index) => <li key={index}>{item}</li>)}
+      <ul className="Lista">
+        {productos.map((item, index) => (
+          <li key={index}>
+            <Link to={`${item}`}>{item}</Link>
+          </li>
+        ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default Categorias
+export default Categorias;
