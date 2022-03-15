@@ -39,15 +39,19 @@ function CuadriculaTienda() {
     }
   };
 
+  // useEffect(() => {
+  //   consulta();
+  // }, []);
+
   useEffect(() => {
     consulta(categoriaId);
   }, [categoriaId]);
 
   return (
     <div className="CuadriculaTienda">
+      {console.log(productos)}
       {/*CARDS CON PRODUCTOS*/}
       {/* {productos.map((item)=><Cards key={item.id} foto={item.foto} nombre={item.nombre} precio={item.precio} minimo={item.minimo} stock={item.stock}/>)} */}
-
       {productos.map((item) => (
         <Cards
           key={item.id}
