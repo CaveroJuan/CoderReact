@@ -6,9 +6,10 @@
   grid-template-areas:
     "Imagen Titulo"
     "Imagen Precio"
-    "Cantidad .";
+    "Imagen Cantidad"
+    "Boton Detalle";
   grid-template-columns: 40% 60%;
-  grid-template-rows: 30% 30% 30%;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   border: 1px solid rgb(236, 236, 236);
   padding: 34px;
 }
@@ -24,4 +25,10 @@
 }
 .ItemDetails .CantidadCards {
   grid-area: Cantidad;
+}
+.ItemDetails .Detalle {
+  grid-area: Detalle;
+}
+.ItemDetails .Boton {
+  grid-area: Boton;
 }

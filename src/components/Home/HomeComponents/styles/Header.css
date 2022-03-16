@@ -1,0 +1,16 @@
+.Header {
+  background-image: url(https://www.bulonescoiro.com/images/demo/bg-sanza.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  display: block;
+  height: 870px;
+  width: 100%;
+  text-align: center;
+  padding-top: 350px;
+}
+
+.Header h1 {
+  background-color: rgba(255, 255, 255, 0.65);
+  display: inline-block;
+  padding: 4px 20px;
+}

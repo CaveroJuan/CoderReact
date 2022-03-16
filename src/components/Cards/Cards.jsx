@@ -13,7 +13,7 @@ function Cards({ id, foto, nombre, precio, minimo, stock }) {
       <TituloCards nombre={nombre} />
       <PrecioCards precio={precio} />
       <CantidadCards minimo={minimo} stock={stock} />
-      <BotonCards id={id} />
+      <BotonCards id={id} texto={"Detalle"} />
     </div>
   );
 }

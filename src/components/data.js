@@ -74,6 +74,17 @@ export const articulos = [
   },
 ];
 
+// export const categoriasMl = [
+//   {
+//     id: "MLA372055",
+//     nombre: "Arandela Plana",
+//   },
+//   {
+//     id: "MLA433538",
+//     nombre: "Arandela Grover",
+//   },
+// ];
+
 // GETFETCH EXPORTACION DE BASE DE DATOS
 export const getFetch = new Promise((resolve, reject) => {
   if (articulos.length !== 0) {
@@ -84,3 +95,14 @@ export const getFetch = new Promise((resolve, reject) => {
     reject("LA BASE DE DATOS SE ENCUENTRA VACIA");
   }
 });
+
+// // GETFETCH EXPORTACION DE CATEGORIAS ML
+// export const getFetchCategorias = new Promise((resolve, reject) => {
+//   if (categoriasMl.length !== 0) {
+//     setTimeout(() => {
+//       resolve(categoriasMl);
+//     }, 2000);
+//   } else {
+//     reject("LA BASE DE DATOS SE ENCUENTRA VACIA");
+//   }
+// });

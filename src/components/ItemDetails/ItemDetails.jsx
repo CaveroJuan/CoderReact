@@ -4,8 +4,8 @@ import CantidadCards from "../Cards/CardsComponents/CantidadCards";
 import ImagenCards from "../Cards/CardsComponents/ImagenCards";
 import PrecioCards from "../Cards/CardsComponents/PrecioCards";
 import TituloCards from "../Cards/CardsComponents/TituloCards";
-import Marca from "./ItemDetailsComponents/Marca";
-// import BotonCards from './CardsComponents/BotonCards'
+import Detalle from "./ItemDetailsComponents/Detalle";
+import BotonCards from "../Cards//CardsComponents/BotonCards";
 import "./styles/ItemDetails.css";
 //para base de datos
 // function ItemDetails({ foto, nombre, precio, minimo, stock, cantCuotas, precioCuotas })
@@ -34,8 +34,8 @@ function ItemDetails() {
       <TituloCards nombre={productos.title} />
       <PrecioCards precio={productos.price} />
       <CantidadCards minimo={productos.available_quantity} stock={productos.sold_quantity} />
-      {/* <Marca marca={productos.seller_address.city.name} /> */}
-      {/* <BotonCards/> */}
+      <Detalle minimo={productos.available_quantity} stock={productos.sold_quantity} />
+      <BotonCards id={1} texto={"Finalizar Compra"} />
     </div>
   );
 }
