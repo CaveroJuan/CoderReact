@@ -7,8 +7,20 @@ import TituloCards from "../Cards/CardsComponents/TituloCards";
 import Detalle from "./ItemDetailsComponents/Detalle";
 import BotonCards from "../Cards//CardsComponents/BotonCards";
 import "./styles/ItemDetails.css";
+
 //para base de datos
 // function ItemDetails({ foto, nombre, precio, minimo, stock, cantCuotas, precioCuotas })
+
+//item datail para base de datos
+/* <div className="ItemDetails">
+<ImagenCards foto={foto} />
+<TituloCards nombre={nombre} />
+<PrecioCards precio={precio} />
+<CantidadCards minimo={minimo} stock={stock} />
+<Cuotas cantCuotas={cantCuotas} precioCuotas={precioCuotas} />
+<BotonCards/>
+</div> */
+
 function ItemDetails() {
   const [productos, setProductos] = useState([]);
   const { detalleId } = useParams();
@@ -23,13 +35,11 @@ function ItemDetails() {
   };
 
   useEffect(() => {
-    // console.log(detalleId);
     consulta(detalleId);
   }, [detalleId]);
 
   return (
     <div className="ItemDetails">
-      {console.log(productos)}
       <ImagenCards foto={productos.thumbnail} />
       <TituloCards nombre={productos.title} />
       <PrecioCards precio={productos.price} />
@@ -39,15 +49,5 @@ function ItemDetails() {
     </div>
   );
 }
-
-//para base de datos
-/* <div className="ItemDetails">
-<ImagenCards foto={foto} />
-<TituloCards nombre={nombre} />
-<PrecioCards precio={precio} />
-<CantidadCards minimo={minimo} stock={stock} />
-<Cuotas cantCuotas={cantCuotas} precioCuotas={precioCuotas} />
-<BotonCards/>
-</div> */
 
 export default ItemDetails;
