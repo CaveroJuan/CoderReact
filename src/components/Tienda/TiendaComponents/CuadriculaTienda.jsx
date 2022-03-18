@@ -32,9 +32,9 @@ function CuadriculaTienda() {
     try {
       let items;
       if (categoriaId === undefined) {
-        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=10&q=buloneria`)).json();
+        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=buloneria`)).json();
       } else {
-        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=10&q=${categoriaId}`)).json();
+        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=${categoriaId}`)).json();
       }
       // %20 para agregar una palabra ---
       setProductos(items.results);

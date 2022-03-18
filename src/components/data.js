@@ -74,6 +74,16 @@ export const articulos = [
   },
 ];
 
+export const getFetchDelay = new Promise((resolve, reject) => {
+  if (true) {
+    setTimeout(() => {
+      resolve(true);
+    }, 3000);
+  } else {
+    reject("LA BASE DE DATOS SE ENCUENTRA VACIA");
+  }
+});
+
 // export const categoriasMl = [
 //   {
 //     id: "MLA372055",

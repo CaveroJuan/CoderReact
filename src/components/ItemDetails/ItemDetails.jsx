@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import CantidadCards from "../Cards/CardsComponents/CantidadCards";
 import ImagenCards from "../Cards/CardsComponents/ImagenCards";
 import PrecioCards from "../Cards/CardsComponents/PrecioCards";
@@ -7,6 +7,8 @@ import TituloCards from "../Cards/CardsComponents/TituloCards";
 import Detalle from "./ItemDetailsComponents/Detalle";
 import BotonCards from "../Cards//CardsComponents/BotonCards";
 import "./styles/ItemDetails.css";
+import Cart from "../Cart/Cart";
+import { getFetchDelay } from "../data";
 
 //para base de datos
 // function ItemDetails({ foto, nombre, precio, minimo, stock, cantCuotas, precioCuotas })
@@ -23,7 +25,8 @@ import "./styles/ItemDetails.css";
 
 function ItemDetails() {
   const [producto, setProducto] = useState([]);
-  const [inputType, setInpuType] = useState();
+  // const [delay, setDelay] = useState();
+  const [type, setType] = useState();
   const { detalleId } = useParams();
 
   const consulta = async (detalleId) => {
@@ -35,23 +38,38 @@ function ItemDetails() {
     }
   };
 
+  const onAdd = (cant) => {
+    console.log(`Se agregaron: ${cant} unidades`);
+    setType(cant);
+  };
+
   useEffect(() => {
+    // getFetchDelay
+    //   .then((result) => {
+    //     setDelay(delay);
     consulta(detalleId);
+    // })
+    // .catch((err) => console.log(err));
   }, [detalleId]);
 
   return (
-    <div className="ItemDetails">
-      <ImagenCards foto={producto.thumbnail} />
-      <TituloCards nombre={producto.title} />
-      <PrecioCards precio={producto.price} />
-      <CantidadCards minimo={producto.available_quantity} stock={producto.sold_quantity} />
-      <Detalle minimo={producto.available_quantity} stock={producto.sold_quantity} />
-      <BotonCards id={1} texto={"Agregar"} onclick={console.log("hola")} />
-      <BotonCards id={2} texto={"Finalizar compra"} onclick={console.log("hola")} />
-      {/* <div className="BotonCards" onClick={() => (stock > 0 ? console.log(`Se agregaron ${count} unidades`) : "")}>
-        Agregar
-      </div> */}
-    </div>
+    <>
+      {producto ? (
+        <div className="ItemDetails">
+          <ImagenCards foto={producto.thumbnail} />
+          <TituloCards nombre={producto.title} />
+          <PrecioCards precio={producto.price} />
+          {type ? (
+            <BotonCards id={"/CARRITO"} texto={"Ir al Carrito"} onclick={() => console.log("go cart")} />
+          ) : (
+            <CantidadCards minimo={producto.available_quantity} stock={producto.sold_quantity} onAdd={onAdd} />
+          )}
+          <Detalle minimo={producto.available_quantity} stock={producto.sold_quantity} />
+        </div>
+      ) : (
+        <div>Cargando detalle de prodcto</div>
+      )}
+    </>
   );
 }
 
