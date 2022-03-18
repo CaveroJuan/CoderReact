@@ -22,13 +22,14 @@ import "./styles/ItemDetails.css";
 </div> */
 
 function ItemDetails() {
-  const [productos, setProductos] = useState([]);
+  const [producto, setProducto] = useState([]);
+  const [inputType, setInpuType] = useState();
   const { detalleId } = useParams();
 
   const consulta = async (detalleId) => {
     try {
       const items = await (await fetch(`https://api.mercadolibre.com/items/${detalleId}`)).json();
-      setProductos(items);
+      setProducto(items);
     } catch (error) {
       console.log("LA BASE DE DATOS SE ENCUENTRA VACIA");
     }
@@ -40,12 +41,16 @@ function ItemDetails() {
 
   return (
     <div className="ItemDetails">
-      <ImagenCards foto={productos.thumbnail} />
-      <TituloCards nombre={productos.title} />
-      <PrecioCards precio={productos.price} />
-      <CantidadCards minimo={productos.available_quantity} stock={productos.sold_quantity} />
-      <Detalle minimo={productos.available_quantity} stock={productos.sold_quantity} />
-      <BotonCards id={1} texto={"Finalizar Compra"} />
+      <ImagenCards foto={producto.thumbnail} />
+      <TituloCards nombre={producto.title} />
+      <PrecioCards precio={producto.price} />
+      <CantidadCards minimo={producto.available_quantity} stock={producto.sold_quantity} />
+      <Detalle minimo={producto.available_quantity} stock={producto.sold_quantity} />
+      <BotonCards id={1} texto={"Agregar"} onclick={console.log("hola")} />
+      <BotonCards id={2} texto={"Finalizar compra"} onclick={console.log("hola")} />
+      {/* <div className="BotonCards" onClick={() => (stock > 0 ? console.log(`Se agregaron ${count} unidades`) : "")}>
+        Agregar
+      </div> */}
     </div>
   );
 }
