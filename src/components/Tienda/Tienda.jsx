@@ -1,11 +1,13 @@
 import React from "react";
-import TituloTienda from "./TiendaComponents/TituloTienda";
-import Categorias from "./TiendaComponents/Categorias";
-import FiltroPrecio from "./TiendaComponents/FiltroPrecio";
-import CuadriculaTienda from "./TiendaComponents/CuadriculaTienda";
-import "./styles/Tienda.css";
 import { Route, Routes } from "react-router-dom";
+
+import TituloTienda from "./TituloTienda";
+import Categorias from "./Categorias";
+import FiltroPrecio from "./FiltroPrecio";
+import CuadriculaTienda from "./CuadriculaTienda";
 import ItemDetails from "../ItemDetails/ItemDetails";
+
+import "./styles/Tienda.css";
 
 function Tienda() {
   return (

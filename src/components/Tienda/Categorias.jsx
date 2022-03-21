@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/Categorias.css";
-import { getFetch } from "../../data";
+import { getFetch } from "../data";
 import { Link } from "react-router-dom";
 
 //Categorias cn cod para ml de la base

@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./HomeComponents/Header";
-import SobreNosotros from "./HomeComponents/SobreNosotros";
-import Productos from "./HomeComponents/Productos";
-import Servicios from "./HomeComponents/Servicios";
-import Contactos from "./HomeComponents/Contactos";
+import Header from "./Header";
+import SobreNosotros from "./SobreNosotros";
+import Productos from "./Productos";
+import Servicios from "./Servicios";
+import Contactos from "./Contactos";
 import "./styles/Home.css";
 
 function Home() {

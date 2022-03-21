@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import "./styles/CantidadCards.css";
 
 function CantidadCards({ minimo, stock, onAdd }) {
@@ -14,11 +15,6 @@ function CantidadCards({ minimo, stock, onAdd }) {
   };
 
   return (
-    // <div className='CantidadCards'>
-    //   <button onClick={()=> count>minimo ? setCount(count-1) : setCount(minimo)}>-</button>
-    //   <span>{count}</span>
-    //   <button onClick={()=> (stock)>count ? setCount(count+1) : setCount(stock)}>+</button>
-    // </div>
     <div>
       <div className="CantidadCards">
         <button onClick={resta}>-</button>

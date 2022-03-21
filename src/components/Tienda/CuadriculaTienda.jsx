@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Cards from "../../Cards/Cards";
+
+import Cards from "../Cards/Cards";
+
 import "./styles/CuadriculaTienda.css";
 
 //CARDS CON PRODUCTOS de base
@@ -32,6 +35,7 @@ function CuadriculaTienda() {
     try {
       let items;
       if (categoriaId === undefined) {
+        console.log(categoriaId);
         items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=buloneria`)).json();
       } else {
         items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=${categoriaId}`)).json();

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
-import CantidadCards from "../Cards/CardsComponents/CantidadCards";
-import ImagenCards from "../Cards/CardsComponents/ImagenCards";
-import PrecioCards from "../Cards/CardsComponents/PrecioCards";
-import TituloCards from "../Cards/CardsComponents/TituloCards";
-import Detalle from "./ItemDetailsComponents/Detalle";
-import BotonCards from "../Cards//CardsComponents/BotonCards";
+import { useParams } from "react-router-dom";
+
+import CantidadCards from "../Cards/CantidadCards";
+import ImagenCards from "../Cards/ImagenCards";
+import PrecioCards from "../Cards/PrecioCards";
+import TituloCards from "../Cards/TituloCards";
+import BotonCards from "../Cards/BotonCards";
+
+import Detalle from "./Detalle";
+
 import "./styles/ItemDetails.css";
-import Cart from "../Cart/Cart";
-import { getFetchDelay } from "../data";
 
 //para base de datos
 // function ItemDetails({ foto, nombre, precio, minimo, stock, cantCuotas, precioCuotas })
@@ -25,9 +26,19 @@ import { getFetchDelay } from "../data";
 
 function ItemDetails() {
   const [producto, setProducto] = useState([]);
-  // const [delay, setDelay] = useState();
   const [type, setType] = useState();
   const { detalleId } = useParams();
+  const [loading, setLoading] = useState(true);
+
+  const getFetchDelay = new Promise((resolve, reject) => {
+    if (true) {
+      setTimeout(() => {
+        resolve(producto);
+      }, 3000);
+    } else {
+      reject("404 not found");
+    }
+  });
 
   const consulta = async (detalleId) => {
     try {
@@ -44,17 +55,17 @@ function ItemDetails() {
   };
 
   useEffect(() => {
-    // getFetchDelay
-    //   .then((result) => {
-    //     setDelay(delay);
-    consulta(detalleId);
-    // })
-    // .catch((err) => console.log(err));
+    getFetchDelay
+      .then(() => consulta(detalleId))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, [detalleId]);
 
   return (
     <>
-      {producto ? (
+      {loading ? (
+        <div>Cargando detalle de prodcto - 3seg</div>
+      ) : (
         <div className="ItemDetails">
           <ImagenCards foto={producto.thumbnail} />
           <TituloCards nombre={producto.title} />
@@ -66,8 +77,6 @@ function ItemDetails() {
           )}
           <Detalle minimo={producto.available_quantity} stock={producto.sold_quantity} />
         </div>
-      ) : (
-        <div>Cargando detalle de prodcto</div>
       )}
     </>
   );
