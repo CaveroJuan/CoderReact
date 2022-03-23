@@ -7,6 +7,8 @@ import PrecioCards from "../Cards/PrecioCards";
 import TituloCards from "../Cards/TituloCards";
 import BotonCards from "../Cards/BotonCards";
 
+import { useCartContext } from "../../context/cartContext";
+
 import Detalle from "./Detalle";
 
 import "./styles/ItemDetails.css";
@@ -49,9 +51,12 @@ function ItemDetails() {
     }
   };
 
+  const { agregarCart } = useCartContext();
+
   const onAdd = (cant) => {
     console.log(`Se agregaron: ${cant} unidades`);
     setType(cant);
+    agregarCart({ ...producto, cantidadVendida: cant });
   };
 
   useEffect(() => {

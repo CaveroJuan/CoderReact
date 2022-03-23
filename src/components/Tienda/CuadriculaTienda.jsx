@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 
 import Cards from "../Cards/Cards";
 
+// import { doc, getDoc, getDocs, colection } from "firebase/firestore";
+// import { getFirestoreApp } from "../../firebase/config";
+
 import "./styles/CuadriculaTienda.css";
 
 //CARDS CON PRODUCTOS de base
@@ -35,7 +38,7 @@ function CuadriculaTienda() {
     try {
       let items;
       if (categoriaId === undefined) {
-        console.log(categoriaId);
+        // console.log(categoriaId);
         items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=buloneria`)).json();
       } else {
         items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=${categoriaId}`)).json();
@@ -49,8 +52,23 @@ function CuadriculaTienda() {
 
   useEffect(() => {
     consulta(categoriaId);
-    console.log(categoriaId);
+    // console.log(categoriaId);
   }, [categoriaId]);
+
+  //un producto
+  // useEffect(() => {
+  //   const db = getFirestoreApp();
+  //   const queryDb = doc(db, "items", "oSidTfVcMMukxtK5NqQm");
+  //   getDoc(queryDb).then((resp) => console.log(resp));
+  //     .then(resp => setProductos({id: resp.id, ...resp.data()}))
+  // }, []);
+
+  // varios productos
+  // useEffect(() => {
+  //   const db = getFirestoreApp();
+  //   const queryColection = colection(db, "items");
+  //   getDocs(queryColection).then((resp) => setProductos(resp.docs.map((item) => ({ id: item.id, ...item.data() }))));
+  // }, []);
 
   return (
     <div className="CuadriculaTienda">
