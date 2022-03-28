@@ -59,7 +59,7 @@ function ItemDetails() {
           <SubTituloCards detalle={producto.Descripcion1} />
           <PrecioCards precio={producto.PrecioVentaUnidades1} />
           {type ? (
-            <BotonCards id={"/CARRITO"} texto={"Ir al Carrito"} onclick={() => console.log("go cart")} />
+            <BotonCards id={"/Carrito"} texto={"Ir al Carrito"} onclick={() => console.log("go cart")} />
           ) : (
             <CantidadCards minimo={Number(producto.CantVentaMinima)} stock={Number(producto.StockUnidades1)} onAdd={onAdd} />
           )}

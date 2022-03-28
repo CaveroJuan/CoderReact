@@ -29,16 +29,14 @@ function CuadriculaTienda() {
 
     getFetchDelay
       .then(() => {
-        if (categoriaId !== undefined) {
+        if (categoriaId === undefined) {
           getDocs(queryDb).then((resp) => {
-            // setProductos([]);
-            // setMostrar(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() })));
-            // mostrar.map((resp) => (Number(resp.CategoriaId) === Number(categoriaId) ? setProductos([...productos, resp]) : console.log("nada")));
-            // console.log(productos);
+            setProductos(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() })));
             console.log("LISTOO");
           });
         } else {
-          getDocs(queryDb).then((resp) => setProductos(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() }))));
+          getDocs(queryDb).then((resp) => setMostrar(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() }))));
+          setProductos(mostrar.filter((item) => item.CategoriaId === categoriaId));
           console.log("estamos aca");
         }
       })
@@ -46,6 +44,7 @@ function CuadriculaTienda() {
       .finally(() => setLoading(false));
   }, [categoriaId]);
 
+  console.log(mostrar);
   return (
     <>
       {loading ? (
