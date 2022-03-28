@@ -8,7 +8,6 @@ import BotonCards from "./BotonCards";
 import "./styles/Cards.css";
 
 function Cards({ id, foto, nombre, precio, minimo, stock }) {
-  // console.log(id);
   return (
     <div className="Cards">
       <ImagenCards foto={foto} />

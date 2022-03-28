@@ -10,9 +10,12 @@ function CartContextProvider({ children }) {
   const agregarCart = (item) => {
     //Mal corregir
     console.log(cartList);
-    console.log(item);
-    cartList.some((data) => item === data) ? console.log("si") : setCartList([...cartList, item]);
-    // cartList.find((item) => item, cartList) ? console.log("ya se encuentra en el carrito") : setCartList([...cartList, item]);
+    setCartList([...cartList, item]);
+    const algo = cartList.find((data) => data === item);
+    console.log(algo);
+
+    console.log(cartList);
+    // cartList.find((data) => data.id === item.id) ? console.log("si") : setCartList([...cartList, item]);
   };
 
   const vaciarCart = () => {

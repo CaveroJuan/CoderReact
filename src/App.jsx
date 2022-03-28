@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Tienda/*" element={<Tienda />} />
             <Route path="/*" element={<Navigate to="/" replace />} />
-            <Route path="/:CARRITO" element={<Cart />} />
+            <Route path="/:Carrito" element={<Cart />} />
           </Routes>
           <Footer />
         </div>

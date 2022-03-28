@@ -1,89 +1,64 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import Cards from "../Cards/Cards";
-
-// import { doc, getDoc, getDocs, colection } from "firebase/firestore";
-// import { getFirestoreApp } from "../../firebase/config";
 
 import "./styles/CuadriculaTienda.css";
 
-//CARDS CON PRODUCTOS de base
-// import { getFetch } from "../../data";
-
-//CARDS CON PRODUCTOS de base
-// const [productos, setproductos] = useState([])
-// useEffect(() => {
-//  getFetch
-//   .then((result) => setproductos(result))
-//   .catch((err) => console.log(err))
-// }, [])
-
-//Uso directo de la api
-// useEffect(() => {
-//   fetch('https://api.mercadolibre.com/sites/MLA/search?q=buloneria&limit=10')
-//   .then((response) => response.json())
-//   .then((response) => setProductos(response.results))
-// }, [])
-
-//CARDS CON PRODUCTOS de base de datos
-//{productos.map((item)=><Cards key={item.id} foto={item.foto} nombre={item.nombre} precio={item.precio} minimo={item.minimo} stock={item.stock}/>)} */}
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 function CuadriculaTienda() {
   const [productos, setProductos] = useState([]);
+  const [mostrar, setMostrar] = useState([]);
   const { categoriaId } = useParams();
+  const [loading, setLoading] = useState(true);
 
-  const consulta = async (categoriaId) => {
-    try {
-      let items;
-      if (categoriaId === undefined) {
-        // console.log(categoriaId);
-        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=buloneria`)).json();
-      } else {
-        items = await (await fetch(`https://api.mercadolibre.com/sites/MLA/search?limit=3&q=${categoriaId}`)).json();
-      }
-      // %20 para agregar una palabra ---
-      setProductos(items.results);
-    } catch (error) {
-      console.log("LA BASE DE DATOS SE ENCUENTRA VACIA");
+  const getFetchDelay = new Promise((resolve, reject) => {
+    if (true) {
+      setTimeout(() => {
+        resolve(productos);
+      }, 1000);
+    } else {
+      reject("404 not found");
     }
-  };
+  });
 
   useEffect(() => {
-    consulta(categoriaId);
-    // console.log(categoriaId);
+    const db = getFirestore();
+    const queryDb = collection(db, "articulos");
+
+    getFetchDelay
+      .then(() => {
+        if (categoriaId !== undefined) {
+          getDocs(queryDb).then((resp) => {
+            // setProductos([]);
+            // setMostrar(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() })));
+            // mostrar.map((resp) => (Number(resp.CategoriaId) === Number(categoriaId) ? setProductos([...productos, resp]) : console.log("nada")));
+            // console.log(productos);
+            console.log("LISTOO");
+          });
+        } else {
+          getDocs(queryDb).then((resp) => setProductos(resp.docs.map((resp) => ({ id: resp.id, ...resp.data() }))));
+          console.log("estamos aca");
+        }
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, [categoriaId]);
 
-  //un producto
-  // useEffect(() => {
-  //   const db = getFirestoreApp();
-  //   const queryDb = doc(db, "items", "oSidTfVcMMukxtK5NqQm");
-  //   getDoc(queryDb).then((resp) => console.log(resp));
-  //     .then(resp => setProductos({id: resp.id, ...resp.data()}))
-  // }, []);
-
-  // varios productos
-  // useEffect(() => {
-  //   const db = getFirestoreApp();
-  //   const queryColection = colection(db, "items");
-  //   getDocs(queryColection).then((resp) => setProductos(resp.docs.map((item) => ({ id: item.id, ...item.data() }))));
-  // }, []);
-
   return (
-    <div className="CuadriculaTienda">
-      {productos.map((item) => (
-        <Cards
-          key={item.id}
-          id={item.id}
-          foto={item.thumbnail}
-          nombre={item.title}
-          precio={item.price}
-          minimo={item.available_quantity}
-          stock={item.sold_quantity}
-        />
-      ))}
-    </div>
+    <>
+      {loading ? (
+        <div>Cargando lista de productos - 1seg</div>
+      ) : (
+        // <></>
+        <div className="CuadriculaTienda">
+          {productos.map((item) => (
+            <Cards key={item.id} id={item.id} foto={item.Imagen} nombre={item.Nombre} precio={item.PrecioVentaUnidades1} />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 

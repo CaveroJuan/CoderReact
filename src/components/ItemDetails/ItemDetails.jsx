@@ -5,6 +5,7 @@ import CantidadCards from "../Cards/CantidadCards";
 import ImagenCards from "../Cards/ImagenCards";
 import PrecioCards from "../Cards/PrecioCards";
 import TituloCards from "../Cards/TituloCards";
+import SubTituloCards from "../Cards/SubTituloCards";
 import BotonCards from "../Cards/BotonCards";
 
 import { useCartContext } from "../../context/cartContext";
@@ -12,19 +13,7 @@ import { useCartContext } from "../../context/cartContext";
 import Detalle from "./Detalle";
 
 import "./styles/ItemDetails.css";
-
-//para base de datos
-// function ItemDetails({ foto, nombre, precio, minimo, stock, cantCuotas, precioCuotas })
-
-//item datail para base de datos
-/* <div className="ItemDetails">
-<ImagenCards foto={foto} />
-<TituloCards nombre={nombre} />
-<PrecioCards precio={precio} />
-<CantidadCards minimo={minimo} stock={stock} />
-<Cuotas cantCuotas={cantCuotas} precioCuotas={precioCuotas} />
-<BotonCards/>
-</div> */
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 function ItemDetails() {
   const [producto, setProducto] = useState([]);
@@ -36,20 +25,11 @@ function ItemDetails() {
     if (true) {
       setTimeout(() => {
         resolve(producto);
-      }, 3000);
+      }, 1000);
     } else {
       reject("404 not found");
     }
   });
-
-  const consulta = async (detalleId) => {
-    try {
-      const items = await (await fetch(`https://api.mercadolibre.com/items/${detalleId}`)).json();
-      setProducto(items);
-    } catch (error) {
-      console.log("LA BASE DE DATOS SE ENCUENTRA VACIA");
-    }
-  };
 
   const { agregarCart } = useCartContext();
 
@@ -60,8 +40,10 @@ function ItemDetails() {
   };
 
   useEffect(() => {
+    const db = getFirestore();
+    const queryDb = doc(db, "articulos", detalleId);
     getFetchDelay
-      .then(() => consulta(detalleId))
+      .then(() => getDoc(queryDb).then((resp) => setProducto({ id: resp.id, ...resp.data() })))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [detalleId]);
@@ -72,15 +54,16 @@ function ItemDetails() {
         <div>Cargando detalle de prodcto - 3seg</div>
       ) : (
         <div className="ItemDetails">
-          <ImagenCards foto={producto.thumbnail} />
-          <TituloCards nombre={producto.title} />
-          <PrecioCards precio={producto.price} />
+          <ImagenCards foto={producto.Imagen} />
+          <TituloCards nombre={producto.Nombre} />
+          <SubTituloCards detalle={producto.Descripcion1} />
+          <PrecioCards precio={producto.PrecioVentaUnidades1} />
           {type ? (
             <BotonCards id={"/CARRITO"} texto={"Ir al Carrito"} onclick={() => console.log("go cart")} />
           ) : (
-            <CantidadCards minimo={producto.available_quantity} stock={producto.sold_quantity} onAdd={onAdd} />
+            <CantidadCards minimo={Number(producto.CantVentaMinima)} stock={Number(producto.StockUnidades1)} onAdd={onAdd} />
           )}
-          <Detalle minimo={producto.available_quantity} stock={producto.sold_quantity} />
+          <Detalle minimo={Number(producto.CantVentaMinima)} stock={Number(producto.StockUnidades1)} />
         </div>
       )}
     </>

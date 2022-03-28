@@ -6,7 +6,7 @@
   grid-template-areas:
     "Imagen Titulo"
     "Imagen Precio"
-    "Imagen Cantidad"
+    "Imagen SubTitulo"
     "Boton Detalle";
   grid-template-columns: 40% 60%;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -20,15 +20,17 @@
 .ItemDetails .TituloCards {
   grid-area: Titulo;
 }
+
 .ItemDetails .PrecioCards {
   grid-area: Precio;
 }
-.ItemDetails .CantidadCards {
-  grid-area: Cantidad;
+.ItemDetails .SubTituloCards {
+  grid-area: SubTitulo;
+}
+
+.ItemDetails .Boton {
+  grid-area: Boton;
 }
 .ItemDetails .Detalle {
   grid-area: Detalle;
-}
-.ItemDetails .Boton {
-  grid-area: Boton;
 }
